@@ -1,0 +1,56 @@
+\section{Tutorials 1 (28 II 2019)}
+Hex, choquet: 2 players.\\
+We say a game is \textbf{determined} if either of players has a winning
+strategy,
+If $\sigma$ is a winning strategy of $P$, then $\forall_{\pi} G(\sigma, \pi) \leftarrow$ wins $P$.\\
+
+\noindent
+\textbf{1.} Is the choquet game determined if we replace $\mathcal{R}$ with $\mathcal{Q}$ (and its topology)?\\
+If so, who has a winning strategy?\\
+
+\noindent
+\textbf{2.} Let's consider a variant of choquet games on topological spaces. We have a property:
+If $X$ is not a Baire space\footnote{$X$ is Baire \underline{if}:\\
+$G_i \leftarrow$ are dense and open for $i \in \mathcal{N}$
+then $\cap_{i > 0} G_i \neq \emptyset$\\
+}
+$\implies$ $E$ has a winning strategy (E means Empty, not Eve!).\\
+Example with rational numbers:\\
+$G^q \leftarrow$ set $\mathcal{Q} \setminus {q}$ dense, open.\\
+$Q$ is countable.\\
+$F \subset Q$\\
+$\cap_{q \in F} G^q = G^F$\\
+$|F| < \mathfrak{c}$\\
+Our strategy:
+\begin{itemize}
+	\item we start with set $G^{q_0}$
+	\item opponent plays a set, say $S_1$
+	\item we play a set $S1 \cap G^{q_0} \cap G^{q_1}$
+\end{itemize}
+
+\noindent
+\textbf{3.} If $X$ is complete then $NE$ has w.s.\\
+A complete space is also a Baire space.\\
+
+\noindent
+\textbf{4.} Consider \textsc{Nim} game.\\
+Setup: $n$ heaps with tokens $h_1, h_2, ..., h_n$.\\
+Move: choose a heap and remove $r > 0$ tokens.\\
+Win: The last move.\\
+We have two players: \textsc{E} and $\forall$, Eve move first.
+Q: Who has a winning strategy? When is the game determined?\\
+
+\noindent
+$n = 1 \leftarrow$ Eve always wins\\
+$n = 2 \leftarrow$ ((1, 1) wins Adam, (2, 1) wins Eve, (2, 2) wins Adam)
+($h_1$, $h_2$) $\rightarrow$ equalise them if possible\\
+Eve has a winning strategy iff $h_1 \neq h_2$\\
+General case: Eve wins if the xor of stack heaps is non-zero. Proof: The winning configuration has xor 0.
+From a situation with xor $\neq 0$ is always able to produce a situation with xor $ = 0$ and if xor $ = 0$,
+it's impossible to make a move such that xor $ = 0$ after the move.\\
+\begin{itemize}
+	\item[1] $(0, ..., 0, h_j, 0, ..., 0)$ is a winning position for Eve.
+	\item[2] if $h_1 \otimes h_2 ... \otimes h_n = 0$ then the position is \textit{balanced}.
+	Balanced positions are winning positions.
+	\item[3] Show strategy (next tutorials)
+\end{itemize}

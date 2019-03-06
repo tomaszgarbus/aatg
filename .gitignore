@@ -1,0 +1,7 @@
+*.aux
+*.toc
+*.log
+contents/*.aux
+contents/*.toc
+contents/*.log
+

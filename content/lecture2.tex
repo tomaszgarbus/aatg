@@ -1,0 +1,111 @@
+\section{Lecture 2 (6 III 2019)}
+\subsection*{Determinacy}
+If we have a \textbf{game of finite duration} with 2 players, we can expand the
+game in a tree, where a leaf signifies the end of the game. A leaf maps to one of
+three possible situations:
+\begin{itemize}
+	\item existential player ($\exists$) wins
+	\item universal player ($\forall$) wins
+	\item draw
+\end{itemize}
+If we map those situations to values accordingly: $1, -1, 0$, the existential
+player aims to maximize (and universal to minimize) the outcome value.\\
+
+\noindent
+Let's consider \textbf{infinite} games now. Suppose we have 2 players and draw is
+not possible in the game. If the player does not know the winning strategy, it is
+possible that they may "loop" in a position with winning strategy but never proceed
+with it.\\
+
+\noindent
+There \textbf{exist} indeterminate perfect information games.\\
+
+\noindent
+Infinite XOR game: $E$ and $A$ alternately play words $w_0, w_1, w_2, ... \in \{0, 1\}^{+}$
+which are concatenated to $w_0w_1w_2...$.\\
+
+\noindent
+Infinite XOR: any function $f: \{0, 1\}^{|\mathbb{N}|} \rightarrow \{0, 1\}$ such that
+if $v, w$ differ by one bit then $f(v) \neq f(w)$.\\
+$v \sim w$ iff differ by a finite number of bits.\\
+We can choose set $S$ s.t. $\{0, 1\}^{|\mathbb{N}|} \supseteq S$ has $\exists!$ element for each equivalence class (from \textit{Axiom of Choice}).\\
+Each equivalence class of $\sim$ is countable, thus there is continuum of equivalence classes.
+
+\noindent
+Eve wins iff $f(w_0w_1...) = 0$, Adam otherwise. No player has a winning strategy
+in this game.\\
+\underline{1. Suppose Adam wins.} In the first play:
+\begin{verbatim}
+E  0      w_2       w_4
+A    w_1       w_3
+\end{verbatim}
+Then in the next game Eve can steal his strategy:
+\begin{verbatim}
+E  1 w_1        w_3       w_5
+A         w_2        w_4
+\end{verbatim}
+\underline{2. Suppose Eve wins.} In the first play:
+\begin{verbatim}
+E  w_0    w_2      w_4
+A       0      w_3
+\end{verbatim}
+Then in the next play:
+\begin{verbatim}
+E  w_0         w_3
+A       1 w_2       w_4
+\end{verbatim}
+
+\subsection*{Game on graph}
+An \textit{arena} is a directed graph, consisting of:
+\begin{itemize}
+	\item the set of \textit{positions} $Pos$
+	\item the set of \textit{moves} $Moves \subseteq Pos \times Pos$
+\end{itemize}
+$Pos = Pos_{\exists} \cup Pos_{\forall}, Pos_{\exists} \cup Pos_{\forall} \neq \emptyset$.\\
+A \textit{play} is a finite or infinite sequence
+$q_0 \rightarrow q_1 \rightarrow q_2 \rightarrow ... \rightarrow q_k (\rightarrow ...)$
+
+\noindent
+\underline{Game equation}
+\begin{figure}[H]
+	\centering
+	$X = (E \cap \diamond X) \cup (A \cap \square X) = Eve(X)$\\
+	$Y = (E \cap \square Y) \cup (A \cap \diamond Y) = Adam(Y)$
+\end{figure}
+$E = Pos_{\exists}, A = Pos_{\forall}, X, Y \in \mathcal{P}(Pos)$\\
+\noindent
+"Modal logic" symbols here:\\
+$\diamond Z = \{p : (\exists_q) Moves(p, q) \land q \in Z\}$
+\footnote{
+	$p \rightarrow q$ also denotes $Moves(p, q)$ below.
+	A position $p$, such that $(\forall_p) p\not\rightarrow q$ is called \textit{terminal},
+	which we also write $p \not\rightarrow$.
+}\\
+$\square Z = \{p : (\forall_q) (p \rightarrow q) \Rightarrow q \in Z\}$
+
+\textbf{Knaster-Tarski Theorem}: $\langle L, \le \rangle$ complete lattice\footnote{
+	A \textit{complete lattice} is a partially ordered set $\langle L, \leq \rangle$, such that
+	each subset $Z \subseteq L$ has the least upper bound $\bigvee Z$, and the greates lower
+	bound $\bigwedge Z$. In particular, $\bigvee \emptyset$ is the least element denoted $\bot$,
+	and $\bigwedge \emptyset$ is the greatest element denoted $\top$.
+}, $f : L \rightarrow L$ monotonic,
+then there exists a least fixed point\\
+$\mu x. f(x) = \bigwedge \{d : f(d) \leq d\}$ and a greatest fixed point:\\
+$\gamma y. f(y) = \bigvee \{d : d \leq f(d) \}$.\\
+\textbf{Proof}: We show the proof for the greatest fixed point. Let $a = \bigvee A, A = \{z : z \leq f(z)\}$\\
+\textbf{TODO}: finish
+
+\noindent
+$Z \subseteq Pos$ is a trap for Adam if $Z \subseteq Eve(Z)$\\
+$Z \subseteq Pos$ is Garden of Eden for Eve if $Eve(Z) \subseteq Z$\\
+
+\noindent
+\underline{\textbf{Proposition:}} $Pos$ can be divided to three disjoint sets:
+$\mu X. Eve(X)$, $\mu X. Adam(X), (\gamma Y. Eve(Y)) \cap (\gamma Y. Adam(Y))$
+
+\subsection*{Definition: strategy}
+A strategy (for Eve) is a set of finite plays s.t.:
+\begin{itemize}
+	\item if $last(w) \in Pos_{\exists}$ then $\exists! q$ s.t. $last(W) \rightarrow q$ and $wq$ is in $S$
+	\item if $last(w) \in Pos_{\forall}$ then $\forall(q) (last(w) \rightarrow q) \Rightarrow wq \in S$
+\end{itemize}
