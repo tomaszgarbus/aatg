@@ -1,0 +1,70 @@
+\section{Tutorials 1 (7 III 2019)}
+\noindent
+\textbf{1.} Consider \textsc{Nim} game.\\
+We have $n$ stacks of heights $h_1, h_2 ..., h_n, h \in \{0, 1, 2, ...\}$.\\
+$W_E = \{x \in \mathbb{N}^R : \text{Eve has a w.s.}\}$.\\
+Let's take $x \in \mathbb{N}^R, x = (h_1, ..., h_n)$.\\
+$h_1^b \otimes h_2^b \otimes ... \otimes h_n^b \neq 0 \rightarrow \text{Eve wins from } x$.\footnote{($h^b$ means binary representation)}\\
+The proof consists of 3 observations:
+\begin{itemize}
+	\item Final position (all empty stacks) has xor equal to 0.
+	\item From a position s.t. xor $\neq 0$, it is always possible to zero the xor.
+	Let xor be equal some $y$. Let $d$ be the position of leftmost (most important)
+	bit in binary representation of xor. Thus in some stack, the binary representation
+	must have The $d$-th bit activated. We can then deactivate $d-$th bit and set
+	appropriate values on all less significant bits (to zero the xor), and the resulting
+	stack height will be lower.
+	\item From a position s.t. xor $= 0$, all moves lead to xor $\neq 0$. If we take
+	a non-zero number of tokens from a stack, it means we alter a non-zero number of
+	binary digits in the representation of xor, thus it is no longer 0.
+\end{itemize}
+Thus, $W_E = \{x \in \mathbb{N}^R : \otimes x \neq \vec{0}\}$.\\
+
+\noindent
+\textbf{2.} Represent \textsc{Nim} as a game on graph.\\
+The set of positions is the set of all stack configurations. In general, the space of positions is infinite,
+but for a fixed game we have finite set of positions.\\
+However, this is not enough (in a game on graph, we want $Pos$ to be disjoint set $Pos = Pos_E \cup Pos_A, Pos_E \cap Pos_A = \emptyset$).
+Thus we also add information who moves next.\\
+Graph: $G = \langle V_E \dot\cup V_A, E \rangle$.\\
+Strategy is a function $\sigma : V^*V \rightarrow V$, $\sigma(v_0v_1v_2...v_nv_{n+1}) \rightarrow v$.\\
+Let $w = v_1...v_n...$ be a winning position. We say that first player wins if their strategy $L \in V^{w}$.\\
+In \textsc{Nim}, the winning condition does not depend on history, so we can collapse the states with the same stacks configuration in the last move
+(and of course the same currrent player).\\
+
+\noindent
+\textbf{3.} Chocolate game.\\
+We have a grid $m \times n$. A player chooses a field and everything on the right and up
+is erased. One restriction: you cannot choose position $(1, 1)$. The player who makes last
+move wins.
+\footnote{
+Other definition: players eat chocolate, position $(1, 1)$ is poisoned.
+}
+Is the game determined? Who has a winning strategy?
+\begin{itemize}[leftmargin=*,labelindent=12.5mm]
+	\item[$1 \times n$:] Eve wins (obvious)
+	\item[$2 \times n$:] Eve wins: she eats the position $(n, 2)$ and always maintains
+	the bottom row has one piece more than the top one.
+	\item[$\omega \times \omega$:]\footnote{$\omega = \{0, 1, ...\}$} Eve wins: eat the position $(2, 2)$ and then maintain $(1, n); (n, 1)$
+	\item[$m \times n$:]\footnote{$m, n \in \mathbb{N}$} Assume the $2$nd player wins. That means that for
+	any move made in the first move, there exists such move from a second player, that the second player
+	has a winning strategy after the second move.\\
+	We can use a strategy stealing argument: First player removes a rectangle larger than $1 \times 1$.
+	Then by assumption the second player has a winning strategy. But instead we can start by removing
+	only one piece of chocolate. Then second player must make a move such that only a single rectangular
+	area is removed (which could be made in one move by the first player). Then first player can copy
+	second player's winning strategy. Thus second player does not have a winning strategy.\\
+\end{itemize}
+Above we have shown that the second player has no w.s.\\
+$\lnot \exists_{\pi} \forall_{\sigma} \pi \text{ wins with } \sigma \Leftrightarrow \forall_{\pi} \exists_{\sigma} \sigma \text{ wins with } \pi$.
+But this doesn't imply $\exists_{\sigma} \forall_{\pi} \sigma > \pi$ (although there is an implication the other way).\\
+We will just show the game is determined, without showing the winning strategy:\\
+We can build the graph of positions. All paths from $m \times n$ (starting position)
+are finite, the size of graph is finite as well. We can thus infer the winning position by
+searching the graph bottom-up (from node $0, 0$ to $m, n$). We have thus shown the game is
+determined for a finite size. Since Adam does not have a winning strategy, thus Eve must have
+it.\\
+For $\omega \times \omega$ we use an argument that after the first move the game graph must have
+a finite height.\\
+
+At home: think about chess determinacy, also Armageddon version (black wins if he doesn't lose, also for draw).
