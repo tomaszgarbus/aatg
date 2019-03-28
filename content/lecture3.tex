@@ -1,0 +1,61 @@
+\section{Lecture 3 (13 III 2019)}
+
+Arena: $Pos = Pos_E \dot\cup  Pos_A$\\
+Move $\in Pos \times Pos$\\
+
+\noindent
+\textbf{Zermelo}: in chess, either White or Black have winning strategies, or
+both have a strategy for a draw (at least).\\
+\textbf{Theorem}: In a graph game, for each position $\gamma$ either Eve has a
+strategy to win in finite time, or Adam has a strategy to win in finite time,
+or both have strategies to survive. Moreover, all strategies can be positional
+\footnote{
+	A strategy $S$ is \textit{positional} (or \textit{memory-less}) if this
+	function depends only on the current position.
+}.\\
+Strategy (for Eve): \textit{I will tell you what to do if you have obeyed me so
+far.}\\
+for $w \in S$:\\
+if $last(w) \in Pos_E$ then $(\exists !p) wp \in S$\\
+if $last(w) \in Pos_A$ then $(\forall p) ((last(w) \rightarrow p) \Rightarrow wp \in S)$\\
+
+\noindent
+Strategy $S$ is positional (memory-less) if $last(w) = last(v)$ then $f_s(w) = f_s(v)$.\\
+
+\noindent
+$f_S$ can be viewed as a partial function on positions of Eve.\\
+
+\noindent
+If $X \subseteq Eve(X)$ then any function $dom_f = X \cap Pos_E$ such that $(\forall x \in dom_f) f(x) \in X$
+witnesses the trap $X$.\\
+A function is safe if it is a witness of a trap.\\
+\underline{\textbf{Prop.}} A partial function $f : Pos_E \supseteq dom_f \rightarrow Pos$
+is $f_S$ for some positional strategy iff \underline{it is safe}. Moreover if $f$ is a witness of trap $Z$ then
+$f = f_S$ such that $start(S) = Z$\footnote{
+$Start(S) = S \bigcap Pos$
+}.\\
+
+\noindent
+\underline{\textbf{Proof}}: Suppose $f$ is a witness for trap $Z$. We define $S = \bigcup_{n = 0} S_n$,
+$S_0 = Z$, $S_n$\\
+
+\noindent
+A position $p$ is safe for Eve if $p \in S$ for some strategy for Eve.\\
+\textbf{Lemma 1} $Safe_E$ -- the set of all safe positions for $E$. $Safe_E = \nu X . Eve(X)$.
+Moreover, Eve has a positional strategy $S$, with $start(S) = Safe_E$.\\
+\textbf{Lemma 2} $Win^{fin}_{E}$ -- the set of positions, from where Eve can win in finite time.
+Then $Win^{fin}_{E} = \mu x. Eve(X)$. Moreover Eve has a positional strategy $S$ finitely winning
+with $Start(S) = Win^{fin}_{E}$.
+
+\noindent
+\textbf{Proposition (from Lecture 2)} \textit{The complement of a trap for Adam is a garden of Eden for him; similarly for Eve.}\\
+\textbf{Proposition (from Lecture 2)}\\
+$\overline{\mu X . Eve(X)} = \nu Y . Adam(Y)$\\
+$\overline{\nu X . Eve(X)} = \mu Y . Adam(Y)$
+
+\noindent
+\textbf{Exercise (from Lecture 2)} \textit{Show that the union of any family of traps for a player is again a trap for this player. Note that this
+implies that the intersection of any family of gardens of Eden for a player is again a garden of Eden for this player. Which more general property
+of ordered sets underlines these facts? (Remember the Knaster-Tarski Theorem.)}\\
+From definition, a set of positions $Z \subseteq Pos$ is a trap for Adam if $Z \subseteq Eve(Z)$. Let $ZS = Z_1, Z_2, ...$ be a (not necessarily finite)
+family of traps. For every $Z_i$ and position $p \in Z_i$, $p \in Eve(ZS)$, thus $ZS \subseteq Eve(ZS)$ so we arrive to the definition of trap again.

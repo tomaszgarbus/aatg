@@ -95,7 +95,7 @@ $\square Z = \{p : (\forall_q) (p \rightarrow q) \Rightarrow q \in Z\}$\\
 }, $f : L \rightarrow L$ monotonic,
 then there exists a least fixed point\\
 $\mu x. f(x) = \bigwedge \{d : f(d) \leq d\}$ and a greatest fixed point:\\
-$\gamma y. f(y) = \bigvee \{d : d \leq f(d) \}$.\\
+$\nu y. f(y) = \bigvee \{d : d \leq f(d) \}$.\\
 \textbf{Proof}: We show the proof for the greatest fixed point. Let $a = \bigvee A, A = \{z : z \leq f(z)\}$\\
 Because $f$ is monotonic, $z \leq a$ implies $f(z) \leq f(a)$. For $z \in A$, this also means $z \leq f(z) \leq f(a)$.
 Hence, $f(a)$ is an upper bound of $A$, which follows $a \leq f(a)$. Using the monotonicity of $f$ once more, we obtain
@@ -131,7 +131,7 @@ $\overline{Eve(X)} = \overline{(E \cap \diamond X) \cup (A \cap \square X)}\newl
 
 \noindent
 \underline{\textbf{Proposition:}} $Pos$ can be divided to three disjoint sets:
-$\mu X. Eve(X)$, $\mu X. Adam(X), (\gamma Y. Eve(Y)) \cap (\gamma Y. Adam(Y))$\\
+$\mu X. Eve(X)$, $\mu X. Adam(X), (\nu Y. Eve(Y)) \cap (\nu Y. Adam(Y))$\\
 
 \subsection*{Definition: strategy}
 A strategy (for Eve) is a set of finite plays s.t.:

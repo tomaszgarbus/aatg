@@ -1,0 +1,48 @@
+\section{Tutorials 3 (14 III 2019)}
+Ordinal numbers:\\
+$0, 1, ..., \omega, \omega+1, ..., \omega+n, ... 2 \omega, ..., n \omega, \omega^2, ..., \omega^5, ..., \omega^\omega, ...$\\
+$\alpha$\ \ \ $\alpha + 1$\ $|$\ $\alpha \cup \{\alpha\}$  $0 = \{\}$\\
+Set of ordinals is well founded (no infinite descending sequence).\\
+$\beta$\ \ \ $\bigcup\limits_{\alpha < \beta} \alpha$\\
+
+\noindent
+\textbf{1.} \textsc{Nim} on ordinals. $G = (h_1, .., h_n), h_i < \omega^\omega$.
+\begin{itemize}
+	\item[1)] Is $G$ determined (for which starting positions)?
+	\item[2)] If so, who has a winning strategy?
+\end{itemize}
+1. \underline{Yes.} A graph of states is a DAG and can be divided into disjoint states of winning positions for both players.\\
+2.
+\begin{itemize}
+	\item[a)] $h < \omega^\omega$\\
+		$h = a_0 + a_1\omega + a_2\omega^2 + ... + a_n\omega^n\ \ (a_i \in \mathbb{N})$ (it is easy to show that this fits under $\omega^\omega$)\\
+		In finite case ($a_i = 0$ if $i > 0$) we aim to zero the xor of all stacks. We will try to apply this strategy to ordinals. Let's
+		define xor on ordinals.\\
+		$\alpha, \beta$ -- ordinals\\
+		$\alpha \oplus \beta = (\alpha_0 \oplus \beta_0) + (\alpha_1 \oplus \beta_1)\omega + ... + (\alpha_n \oplus \beta_n)\omega^n$\\
+		\underline{Statement} In game $G = (h_1, .., h_n)$ Eve has a winning strategy iff $\underset{i > 0}{\oplus} h_i \neq \emptyset$.
+		We need to prove that:
+		\begin{itemize}
+			\item[1\textdegree] If Eve plays from $\oplus \neq 0$ then she can always maintain $\oplus = 0$.
+			\item[2\textdegree] $\oplus = 0 \Rightarrow$ Every Adam's move makes it $\neq 0$.
+			\item[3\textdegree] Ends after a finite number of steps in necessarily Adam's position.
+		\end{itemize}
+\end{itemize}
+
+\noindent
+\textbf{2.} Infinite XOR is an undetermined game such that its graph of positions has inifinite branching. Try to find a game such that
+is undetermined but has finite branching.\\
+We modify the game so that player can only place a single letter from the alphabet $\Gamma = \{0, 1, 2, 3, \#\}$ and we have an interpretation function
+$f : \{0, 1, 2, 3, \#\}^\omega \rightarrow \{0, 1\}^\omega$. If a player does not place a hash (end of a word) in a finite time, they lose. Once a player
+places a hash, its the other player's turn.\\
+
+\noindent
+\textbf{Gale-Stewart games}: $\langle \Gamma, W \subseteq \Gamma^\omega \rangle$, game of perfect information.\\
+
+\noindent
+\textbf{Zermelo}: Let $G = \langle V, \rightarrow \rangle$ be a graph game. Then there exists a partition $W_E \dot\cup W_A \dot\cup W_N = V$
+s.t. player $P \in \{E, A\}$ has a \underline{positional} winning strategy in position $v \in W_P$.\\
+
+\noindent
+\textbf{Reachability game}: We select a node in graph, Eve wants to reach that node, Adam does not want to ever reach that node. If the play is infinite and looped
+without reaching the selected node, Adam wins.

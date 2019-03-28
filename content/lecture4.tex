@@ -1,0 +1,55 @@
+\section{Lecture 4 (20 III 2019)}
+\underline{Generalized Zermelo Theorem}: For any position $p$ in a deterministic, two-person game with perfect information (and players make moves alternatingly):
+\begin{itemize}
+  \item one of the players has a winning strategy (winning in finite time)
+  \item or both players have a surviving strategy
+\end{itemize}
+Moreover, those strategies can be positional.\\
+$Eve(X) = (E \cap \diamond X) \cup (A \cap \square X)$ -- those positions,
+from which $X$ can be achieved in one move. If it is Eve's move, there must be
+one move to position in $X$, if Adam's -- all moves must lead him to $X$.\\
+We want to find the smallest fixed point $\mu X. Eve(X)$.\\
+$\bigvee f^{\zeta}(\bot) = \mu x. f(x) = \bigwedge \{ d\ :\ f(d) \leq d\}$\\
+$\bot$ -- minimal element\\
+$f^0(\bot) = \bot$\\
+$f^{\zeta + 1}(\bot) = f(f^{\zeta}(\bot))$\\
+$\eta$ -- limit element:\\
+$f^{\eta}(\bot) = \underset{\zeta < \eta}{\bigvee} f^{\zeta}(\bot)$\\
+
+\noindent
+Algorithm for finding winning positions for player $X \in \{Eve, Adam\}$:
+\begin{lstlisting}[tabsize=2]
+Program Win(X)    $X \in \{Eve, Adam\}$
+W : Pos $\rightarrow \{ \bot, \exists, \forall \}$
+Forall $p \in Pos$
+ W(p) = $\bot$
+ pred(p) = $\emptyset$
+ nb(p) = 0
+Forall (p, q) $\in$ Move
+ pred(q) := pred(q) $\cup$ {p}
+ nb(p) := nb(p) + 1
+Forall p $\in$ Pos$_{\overline{X}}$
+ if nb(p) = 0 then Propagate(p, X)
+
+Propagate(q, X)
+ if W(q) = $\bot$ then W(q) = X
+ Forall p $\in$ pred(q)
+  if W(p) = $\bot$ then
+	 if p $\in$ Pos$_{X}$ then
+    W(p) = X
+    Propagate(p, X)
+   else (* p $\in$ Pos$_{\overline{X}}$ *) then
+    nb(p) := nb(p) - 1
+	  if nb(p) = 0 then
+	   Propagate(p, X)
+\end{lstlisting}
+
+\subsection*{Parity games}
+$Pos_E, Pos_A, Move, rank : Pos \rightarrow C$\\
+$Win_E \subseteq C^{\omega}$\\
+$Win_A \subseteq C^{\omega}$\\
+$Win_E \cap Win_A = \emptyset$\\
+Parity games: $C \subseteq \mathbb{N}$\\
+$Win_E = \{ u \in C^{\omega}\ :\ \underset{n \rightarrow \infty}{\lim\sup}\ u_n\ \text{is even} \}$\\
+$Win_A = \overline{Win_E}$\\
+Every position is winning for one of the players, with a positional strategy.

@@ -7,9 +7,15 @@
 \usepackage{fancyvrb}
 \usepackage{multicol}
 \usepackage{enumitem}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{wasysym} % TODO: using for \natural, find better package instead
 \usepackage[a4paper, total={8in, 10in}]{geometry}
 \setlength{\columnseprule}{0.0001pt}
-
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
 
 \title{Algorithmic Aspects of Game Theory}
 \author{Tomasz Garbus}
@@ -20,6 +26,7 @@
 
 \begin{document}
 \renewcommand{\contentsname}{Contents}
+\renewcommand{\figurename}{Fig.}
 
 \maketitle
 \tableofcontents
@@ -28,6 +35,12 @@
 \input{content/tutorials1}
 \input{content/lecture2}
 \input{content/tutorials2}
+\input{content/lecture3}
+\input{content/tutorials3}
+\input{content/lecture4}
+\input{content/tutorials4}
+\input{content/lecture5}
+\input{content/tutorials5}
 
 \bibliographystyle{plain}
 \bibliography{references}
