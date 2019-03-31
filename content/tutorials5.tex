@@ -50,5 +50,12 @@ Solutions:
 $\textbf{up}\ :\ \text{LAR} \times \Gamma \rightarrow \Gamma$\\
 $\textbf{up}(v_i \natural w_i, a) = \begin{cases}
 	v_i \natural w_i a\ \ \ \ \ \ a \not\in v_i, a \not\in w_i\\
-	[v_iw_i]_{a \mapsto \natural}a
+	[v_iw_i]_{a \mapsto \natural, \natural \mapsto \emptyset}a\ \ \ \ \text{else}
+\end{cases}$
+
+\noindent
+\underline{Theorem}: The following cylindrification of $G$ is a solution to task (4):
+$rank(p, v\natural a_1....a_l) = \begin{cases}
+	2l\ \ \ \ \ \text{if} \{a_1,...,a_l\} \in \mathcal{F}\\
+	2l + 1\ \ \ \ \ \text{otherwise}
 \end{cases}$
