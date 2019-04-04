@@ -226,12 +226,16 @@ INPUT /home/tomek/Desktop/AATG/content/graphics/game6.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game6.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/plbx7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/plbx5.tfm
+INPUT /home/tomek/Desktop/AATG/content/lecture6.tex
+INPUT /home/tomek/Desktop/AATG/content/lecture6.tex
+INPUT /home/tomek/Desktop/AATG/content/tutorials6.tex
+INPUT /home/tomek/Desktop/AATG/content/tutorials6.tex
 INPUT /home/tomek/Desktop/AATG/aatg.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plmi.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plrm.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plms.enc
-INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plit.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plme.enc
+INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plit.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/pltt.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plsc.enc
 INPUT /home/tomek/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk

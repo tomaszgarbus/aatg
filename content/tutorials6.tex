@@ -1,0 +1,47 @@
+\section{Tutorials 6 (4 IV 2019)}
+\subsection*{Last week}
+\underline{Theorem} If $G$ is a finite Muller game, then one of the players
+has a finite memory winning strategy. $\langle V, E, v_I, \textsc{Muller} \rangle$\\
+\underline{Proof} $G'$ -- a parity game s.t.\\
+Adam wins in $G' \Rightarrow$ Adam wins in $G$\\
+Eve wins in $G' \Rightarrow$ Eve wins in $G$\\
+LARs
+\subsection*{Automata}
+$\mathcal{A} = \langle \Gamma, Q, q_i, \delta, F \rangle$\\
+Word: $q_I \in Q, \delta: Q \times \Gamma \times Q, (q, a) \rightsquigarrow \{q_1, q_2, q_3, ...\}$\\
+\subsubsection*{Infinite automata}
+\textbf{Büchi condition} $F \subseteq Q$ (the states appearing infinitely often)\\
+\textbf{Müller condition} $F \subseteq 2^Q$\\
+\textbf{Parity}\\
+\textbf{Safety} -- Parity with condition [0]\\
+\underline{Theorem} Every regular language of infinite words is recognizable by a deterministic Müller
+automaton.\\
+
+\noindent
+\textbf{1.}
+Show that if $G$ is a finite Müller game, then set of plays is regular.\\
+
+\noindent
+$P$ -- set of plays\\
+$P \subseteq V^\omega$\\
+The automaton is the graph. $\langle V, V, v_I, \{ (v_1, v_2, v_3)\ |\ E \langle v_1, v_2 \rangle \} \rangle$\\
+
+\noindent
+\underline{Def} Game is $\omega$-regular if the winning condition is a regular set of winning plays.\\
+$G = \langle V, L \rangle$. ($L \subseteq \Gamma^{\omega}$, Eve wins if $p \in L$)\\
+
+\noindent
+\textbf{2.}
+Show that if $G$ is $\omega$-regular finite game then one of the players has a finite winning strategy.\\
+
+\noindent
+$G = \langle E, V_I, V_A, V_E \rangle, V = V_A \cup V_E$\\
+$G_A = \langle V_A^\prime = V_A \times Q, V_E^\prime = V_E \times Q, V_I^\prime, E^\prime \rangle$\\
+$G_A = \langle V^\prime, E^\prime, V_I^\prime \rangle$\\
+$V^\prime = V \times Q$\\
+$E^\prime = \{((v_1, q_1), (v_2, q_2))\ :\ (v_1, v_2) \in E, q_2 = \delta(q_1, v_1)\}$\\
+$v_I^\prime = (v_I, q_I)$\\
+$W = inf(L(P)) \in \mathcal{F}$\\
+$L = \pi_2(p)$\\
+\underline{Lemma}: $E$ has a finite memory winning strategy in $G_A$ $\Rightarrow$ $E$ has a
+winning strategy in $G$.
