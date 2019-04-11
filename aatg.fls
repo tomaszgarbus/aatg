@@ -235,6 +235,11 @@ INPUT /home/tomek/Desktop/AATG/content/lecture7.tex
 INPUT /home/tomek/Desktop/AATG/content/graphics/game7.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game7.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game7.png
+INPUT /home/tomek/Desktop/AATG/content/tutorials7.tex
+INPUT /home/tomek/Desktop/AATG/content/tutorials7.tex
+INPUT /home/tomek/Desktop/AATG/content/graphics/game8.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game8.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game8.png
 INPUT /home/tomek/Desktop/AATG/aatg.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plmi.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plrm.enc
@@ -246,6 +251,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plsc.enc
 INPUT /home/tomek/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/pl/plbx10.pfb
