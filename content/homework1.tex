@@ -1,0 +1,46 @@
+\section{Homework1}
+\subsection*{5 Multi-reachability games}
+\textbf{In a reachability games there is a set of vertices which the first player
+wants to reach. In multi-reachability games (MRG) there is a family of
+sets of vertices and the first player wins if every set in the family has been
+visited at least once.\\
+1. Show that MRG game is PSpace-complete.}\\
+1. \underline{$\in \textsc{PSpace}$}\\
+HMMMMM
+
+\noindent
+2. \underline{\textsc{PSpace}-hard}\\
+I will show a reduction of QBF problem to an MRG game.\\
+An input to the QBF problem is a formula, about which I will make two assumptions:
+\begin{itemize}
+    \item It is in prenex normal form (i.e. all quantifiers preceed the portion
+    containing an unquantified Boolean formula). Moreover, let's assume that the
+    existental and universal quantifiers alternate -- if it is not the case in the
+    original input formula, we can introduce quantifiers with dummy variables, not
+    used anywhere in the formula. For instance, $\exists_{x_1} \exists_{x_2}
+    \phi(x_1, x_2) \mapsto \exists_{x_1} \forall_{y_1} \exists_{x_2} \phi(x_1, x_2)$
+    ($y_1$ is a "dummy" variable).
+    \item The "body" of the formula is in conjunctive normal form.
+\end{itemize}
+Note that the above assumptions do not reduce the expressive power of input formulas.
+Every possible formula can be represented in the described format. QBF problem for
+such normalized formulas is still \textsc{PSpace}-complete.\\
+Let $\forall_{x_1} \exists_{x_2} \forall_{x_3} ... \exists_{x_n}
+(y_{1,1} \lor ... \lor y_{1,k_1}) \land (y_{2,1} \lor ... \lor y_{2,k_2}) \land ... (y_{m,1} \lor ... \lor y_{m,k_m})$
+be the input QBF formula, where $y_{...} \in \{x_1, ..., x_n, \lnot x_1, ... \lnot x_n \}$.
+The created multi-reachability game is $G = \langle V, E, v_I, S \rangle$, where:
+\begin{itemize}
+    \item $V$ is the set of vertices. Vertices are indexed by all variables bound by
+          quantifiers and their negations, plus there is the initial vertex.
+          $V = \underset{1 \leq i \leq n}{\bigcup} \{v_x, v_{\lnot x}\} \cup \{v_I\}$
+    \item $E$ is the set of edges.
+          $E = \{(v_I, v_{x_1}), (v_I, v_{\lnot x_1})\} \cup
+          \underset{2 \leq i \leq n}{\bigcup} \{ (v_{x_{i-1}}, v_{x_i}), (v_{x_{i-1}}, v_{\lnot x_i}),
+          (v_{\lnot x_{i-1}}, v_{x_i}), (v_{\lnot x_{i-1}}, v_{\lnot x_i}) \}$
+    \item $v_I$ is a starting vertex.
+    \item $S$ is the family of sets of vertices that the first player wants to reach.
+          It is created directly from the CNF formula, i.e.
+          $S = \underset{1 \leq i \leq m}{\bigcup} \{ \{ v_{y_{i,j}}\ |\ 1 \leq j \leq k_i \} \}$
+\end{itemize}
+The first player is the existential player, their opponent is the universal player (and they start the game).
+The QBF formula is satisfiable iff the first player has a winning strategy.
