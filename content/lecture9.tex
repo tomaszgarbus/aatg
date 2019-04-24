@@ -3,4 +3,42 @@
 Adam and Eve play on a weighted graph (negative weights also occur). The play ends
 once one vertex has been visited twice (there has occurred a loop). The score of the
 game is the mean of the weights \textbf{only} on the loop. Eve wants to maximize the
-score, Adam - to minimize. The game is of course determined.
+score, Adam - to minimize. The game is of course determined.\\
+
+\noindent
+Arena: finite graph $\langle Pos_E, Pos_A, Move \subseteq Pos \times Pos \rangle$\\
+$c\ :\ Move \longrightarrow \mathbb{Z}$\\
+Suppose an infinite play $\pi = (p_0, p_1, p_2, ...)$ is taken.\\
+Then:\\
+$Pay_E(\pi) = \underset{n \rightarrow \infty}{lim inf} \frac{1}{n} \sum_{i=0}^{n-1} c(p_i, p_{i+1})$\\
+$Pay_A(\pi) = \underset{n \rightarrow \infty}{lim sup} \frac{1}{n} \sum_{i=0}^{n-1} c(p_i, p_{i+1})$\\
+$Pay_A(\pi) - Pay_E(\pi)$ is taken by Tax Office.\\
+
+\noindent
+$\Gamma$ -- mean-payoff game\\
+$G$ -- finite game (terminates once the first loop is closed and the value is the mean on this loop)\\
+
+\noindent
+\textbf{Thm (1)} $G$ is determined (obvious), for each position $p$ there is an optimal game value
+$val_G(p)$, such that Eve and Adam can both achieve precisely this.\\
+
+\noindent
+\textbf{Thm (2)} $\Gamma$ is determined and $val_G(p) = val_{\Gamma}(p)$.\\
+Eve has a strategy $S$ in $G$. We deine a strategy $S'$ in $\Gamma$.
+Play $S$, as soon as a loop is formed, remove it and play $S$ again.\\
+Claim: with this strategy Eve can achieve at least $val_{G}(p)$.\\
+Note:\\
+$\frac{a_1+...+a_m}{m} \geq c$, $\frac{b_1+...+b_n}{n} \geq c$, then:
+$\frac{a_1+...+a_m+b_1+...+b_n}{m+n} \geq c$\\
+Therefore:\\
+$\frac{1}{n} \sum_{i=0}^{n-1} c(p_i,p_{i+1}) = \frac{\text{no loop}}{n} + \text{mean loop} + \text{mean loop} + ...$\\
+
+\noindent
+\textbf{Lemma (orange)}\\
+$q_0, p$ -- positions\\
+$G_{q_0}(p)$ -- Play as in $G$, but if you reach $q_0$, \underline{reset}\footnote{
+    When players eat the orange, they forget about the past \texttt{:D}
+}.\\
+$val_{G_{q_0}}(p) = val_G(p)$\\
+Strategy for Eve in $G_{q_0}$ from $p$: Play $S$ (the strategy in $G$) from $p$, but if we visit $q_0$, play
+$S$ from $q_0$.
