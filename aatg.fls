@@ -259,6 +259,11 @@ INPUT /home/tomek/Desktop/AATG/content/graphics/game7.png
 INPUT /home/tomek/Desktop/AATG/content/lecture9.tex
 INPUT /home/tomek/Desktop/AATG/content/lecture9.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/pltt8.tfm
+INPUT /home/tomek/Desktop/AATG/content/tutorials8.tex
+INPUT /home/tomek/Desktop/AATG/content/tutorials8.tex
+INPUT /home/tomek/Desktop/AATG/content/graphics/game9.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game9.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game9.png
 INPUT /home/tomek/Desktop/AATG/aatg.aux
 INPUT /home/tomek/Desktop/AATG/aatg.out
 INPUT /home/tomek/Desktop/AATG/aatg.out
@@ -266,8 +271,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/pltt.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plmi.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plrm.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plms.enc
-INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plme.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plit.enc
+INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plme.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plsc.enc
 INPUT /home/tomek/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb
