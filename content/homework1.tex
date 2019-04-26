@@ -201,3 +201,41 @@ Every step of this method is polynomial in time.\\
 
 \noindent
 2. \underline{P-hard}\\
+I will show a reduction of circuit value problem (CVP) to an MRG game where the sets are singletons.
+The input to the problem is a boolean circuit and an input to the circuit. The first layer consists of inputs
+and their negations (every boolean circuit can be transformed to a form where the only negations are the once
+in the input layer). Every node in further layers is either a conjunction or disjunction of its inputs.\\
+
+\noindent
+The general idea is that we will treat the circuit as a graph and reverse the edges. In $\lor$ nodes the first
+player moves, in $\land$ nodes, the second player moves. The first player wins iff they have a strategy for
+reaching any input set to \texttt{true}, which can be expressed by creating a new vertex $w$ such that all inputs
+set to true have an outgoing edge to $w$. The first player therefore wants to reach $w$.\\
+
+\noindent
+In order to transform this problem to an MRG game with singleton sets, we first treat the given circuit as a
+graph $G_{cir} = \langle V_{cir}, E_{cir}, r \rangle$, where $V_{cir}$ is the set of vertices, $E_{cir}$ the
+set of edges and $r\ :\ V_{cir} \rightarrow \{ \land, \lor \} \cup \{in, \lnot in\} \times \mathbb{N}$
+is a function describing a vertex's role. $\land$ and $\lor$ of course mean that the vertex is a conjunction/disjunction
+of its inputs, $(in, k)$ means that it is the $k$-th input value, $(\lnot in, k)$ means that it is the negation
+of $k$-th input value. Let $s$ be the input sequence and $n = |s|$.\\
+
+\noindent
+The game we construct is $\mathcal{G} = \langle Pos = Pos_{\exists} \cup Pos_{\forall}, Moves, win \rangle$, where:
+\begin{itemize}
+      \item $win$ is the set of singletons the first player wants to reach.
+            $win = \{\{ w \}\}$, where $w$ is a new vertice such that\\
+            $\forall_{p \in Pos} ((r(p) = (in,i) \land s[i] = true) \lor (r(p) = (\lnot in,i) \land s[i] = false) \rightarrow (p, w) \in Moves)$.\\
+            In other words, $w$ can be reached from any input vertex from the original circuit, which evaluates to \texttt{true}.
+      \item $Pos = V_{cir} \cup \{w\}$ is the set of positions.\\
+            Vertices with $\land$ symbol belong to the opponent, all others belong to the first player:\\
+            $Pos_{\forall} = \{p\ |\ r(p) = \land\}, Pos_{\exists} = \{p\ |\ p \not\in Pos_{\forall}\}$
+      \item $Moves$ is the set of edges, i.e. moves on the graph.\\
+            $Moves = \{(v,u)\ |\ (u,v) \in E_{cir}\} \cup \{(p,w)\ |\ (r(p) = (in,i) \land s[i] = true) \lor (r(p) = (\lnot in,i) \land s[i] = false)\}$
+      \item The starting position of the game is the top vertex of the circuit (the one to be evaluated in circuit value problem).
+\end{itemize}
+The first player can reach $w$ in this game if and only if the original circuits evaluates to $1$.
+For each $\lor$ node, the first player can choose which compound of the alternative they want to be true.
+For each $\land$ node, we let the second player choose any compound of the conjunction. Once the game
+reaches a node corresponding to an input in the original circuit (which of course happens in finite time
+since this is a DAG), the first player wins if and only if this input evaluates to \texttt{true}.
