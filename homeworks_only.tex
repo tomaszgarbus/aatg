@@ -10,6 +10,10 @@
 \usepackage{listings}
 \usepackage{textcomp}
 \usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary {positioning}
+\usetikzlibrary{automata}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
 \usepackage{wasysym} % TODO: using for \natural, find better package instead
 \usepackage[a4paper, total={8in, 10in}]{geometry}
 \lstset{
@@ -29,9 +33,9 @@
 \renewcommand{\figurename}{Fig.}
 
 \maketitle
-\tableofcontents
 
-\input{content/homework1}
+\input{content/homework1_1.2}
+\input{content/homework1_5}
 
 \bibliographystyle{plain}
 \bibliography{references}

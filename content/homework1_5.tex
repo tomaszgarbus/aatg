@@ -1,30 +1,4 @@
-\section{Homework1}
-\subsection*{1.2 One-player game}
-\textbf{Let $\mathcal{G} = \langle V, E \rangle$ be a legal graph. A move in a one-player game in $\mathcal{G}$
-is a reversal of a single edge, such that the resulting graph is legal.\\
-Consider the following problem: given a legal graph $\mathcal{G}$ and an edge $e \in E$, does there exists
-a sequence of moves that reverse edge $e$?\\
-We proved that if we restrict the above problem to the case where every edge
-can be reversed at most once, then the problem is NP-complete (reduction
-from 3CNF)\\
-Show that the above problem is PSpace-complete.}\\
-1. \underline{$\in \textsc{PSpace}$}\\
-2. \underline{\textsc{PSpace}-hard}\\
-I will show a reduction from QBF in to one-player flow game. I will assume two
-things about the formula:
-\begin{itemize}
-      \item It is in prenex normal form (i.e. all quantifiers preceed the portion
-      containing an unquantified Boolean formula). Moreover, let's assume that the
-      existental and universal quantifiers alternate -- if it is not the case in the
-      original input formula, we can introduce quantifiers with dummy variables, not
-      used anywhere in the formula. For instance, $\exists_{x_1} \exists_{x_2}
-      \phi(x_1, x_2) \mapsto \exists_{x_1} \forall_{y_1} \exists_{x_2} \phi(x_1, x_2)$
-      ($y_1$ is a "dummy" variable).
-      \item The "body" of the formula is in conjunctive normal form.
-\end{itemize}
-
-
-\subsection*{5 Multi-reachability games}
+\section*{5 Multi-reachability games}
 \textbf{In a reachability games there is a set of vertices which the first player
 wants to reach. In multi-reachability games (MRG) there is a family of
 sets of vertices and the first player wins if every set in the family has been
