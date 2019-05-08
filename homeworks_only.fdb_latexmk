@@ -1,15 +1,16 @@
 # Fdb version 3
-["bibtex homeworks_only"] 1557320883 "homeworks_only.aux" "homeworks_only.bbl" "homeworks_only" 1557320888
+["bibtex homeworks_only"] 1557323455 "homeworks_only.aux" "homeworks_only.bbl" "homeworks_only" 1557323457
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "homeworks_only.aux" 1557320888 4312 e9a3e9055e30da57dc26c14431ea4fff ""
+  "homeworks_only.aux" 1557323457 4312 a86e6f7e283823cb6fa2a63f82e5d1f7 ""
   "homeworks_only.bcf" 0 -1 0 ""
   "references.bib" 0 -1 0 ""
   (generated)
   "homeworks_only.bbl"
-["pdflatex"] 1557320886 "/home/tomek/Desktop/AATG/homeworks_only.tex" "/home/tomek/Desktop/AATG/homeworks_only.pdf" "homeworks_only" 1557320888
+  "homeworks_only.blg"
+["pdflatex"] 1557323455 "/home/tomek/Desktop/AATG/homeworks_only.tex" "/home/tomek/Desktop/AATG/homeworks_only.pdf" "homeworks_only" 1557323457
   "/etc/texmf/web2c/texmf.cnf" 1553252201 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/tomek/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1552550866 11524 decfbc96c2c90dcb66291198c6436d24 ""
-  "/home/tomek/Desktop/AATG/homeworks_only.aux" 1557320888 4312 e9a3e9055e30da57dc26c14431ea4fff ""
+  "/home/tomek/Desktop/AATG/homeworks_only.aux" 1557323457 4312 a86e6f7e283823cb6fa2a63f82e5d1f7 ""
   "/home/tomek/Desktop/AATG/homeworks_only.tex" 1557299930 941 86ecef90e2824ccc6e5fbd93fc8eaf49 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plit.enc" 1136849721 1946 62ba825cda1ff16dbaa60d53ac60525a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/pl/plme.enc" 1136849721 3126 59f33ff3e396436ebc36f4e7b444d5c4 ""
@@ -217,17 +218,17 @@
   "content/graphics/game18.png" 1557301909 129133 3432607e3998e46dc2db309af33bb754 ""
   "content/graphics/game19.png" 1557318482 140683 0ed0ab4bddece929894b015ef5634265 ""
   "content/graphics/game20.png" 1557320578 887327 438fc62682f754bf402f6885b403c0b9 ""
-  "content/homework1_1.1.tex" 1557320875 9818 c008a487e5ed3c33b4a992976508c1d1 ""
+  "content/homework1_1.1.tex" 1557323452 12869 b8b89ce5885d4863d44d8a0b6f22bdb2 ""
   "content/homework1_1.2.tex" 1557299930 8754 8a212204a7ef279a1d7d039943ba8266 ""
   "content/homework1_5.tex" 1557299930 13870 63e5e88a1d4835cfc77026f5588971f3 ""
-  "homeworks_only.aux" 1557320888 4312 e9a3e9055e30da57dc26c14431ea4fff ""
+  "homeworks_only.aux" 1557323457 4312 a86e6f7e283823cb6fa2a63f82e5d1f7 ""
   "homeworks_only.bbl" 0 -1 0 "bibtex homeworks_only"
-  "homeworks_only.out" 1557320886 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "homeworks_only.out" 1557323455 0 d41d8cd98f00b204e9800998ecf8427e ""
   "homeworks_only.tex" 1557299930 941 86ecef90e2824ccc6e5fbd93fc8eaf49 ""
   (generated)
-  "/home/tomek/Desktop/AATG/homeworks_only.log"
-  "homeworks_only.log"
-  "homeworks_only.pdf"
-  "homeworks_only.out"
-  "homeworks_only.aux"
   "/home/tomek/Desktop/AATG/homeworks_only.pdf"
+  "homeworks_only.log"
+  "/home/tomek/Desktop/AATG/homeworks_only.log"
+  "homeworks_only.out"
+  "homeworks_only.pdf"
+  "homeworks_only.aux"

@@ -97,7 +97,7 @@ example of such transformation:
 \noindent
 Now, having ensured that two nodes can be connected only if they are on two consecutive layers, 
 we need to remove crossing edges.\\
-First, we multiply all weights in the graph (both for edges and vertices)by $2$.\\
+First, we multiply all weights in the graph (both for edges and vertices) by $2$.\\
 Then let's take any drawing of the graph on 2D plane such that:
 \begin{itemize}
       \item no three edges go through a single point (at most two edges may be intersecting at one point)
@@ -115,6 +115,7 @@ graph with crossover gadgets, and vice versa.
       \includegraphics[scale=0.1]{content/graphics/game20.png}
 \end{figure}
 
+\noindent
 \textbf{
       3. Show that it remains P-complete if we restict to graphs whose vertices have
       degrees at most 3 and the possible weights of both vertices and edges are
@@ -152,3 +153,53 @@ The last step is to perform analogous procedure for outgoing edges. It is also p
       }
       \includegraphics[scale=0.2]{content/graphics/game17.png}
 \end{figure}
+
+
+\subsection*{Unbounded problem}
+Consider the following unbounded problem: given a legal graph $G = \langle V, E \rangle$,
+a set of edges $R \subseteq E$ and an edge $e \in E$, does there exist a sequence of moves
+that reverses $e$?\\
+\textbf{1. Show that the unbounded problem is PSpace-complete.}\\
+1. \underline{$\in \textsc{PSpace}$}\\
+There can be no more than $2^{|E|} \cdot 2^{|E|} \cdot 2^{|E|}$ different combinations of current state of the game:
+\begin{itemize}
+      \item each edge can either be reversed or not
+      \item each edge can either be in $R_k$ or not, for current step number $k$ 
+      \item each edge can either be in $R_{k-1}$ or not, for current step number $k$ 
+\end{itemize}
+The exact value of $k$ is irrelevant to the computation of sets $E_{k+1}, R_{k+1}$. Note that
+the above is an upper bound, perhaps a smaller number of different states can be proven.
+An example algorithm working in polynomial space is one that just simulates the zero-player unbonded game for
+at most $2^{|E| \cdot 3}$ steps, keeping a counter of steps in binary format ($3c \dot |E|$ bits are needed).
+If edge $e$ has not been reversed during this number of steps, it never will (since some state of the game
+has reoccurred and the play will forever loop).\\
+
+\noindent
+2. \underline{\textsc{PSpace}-hard}\\
+I will show a reduction of QBF problem to the unbonded zero-player game. In fact, I will reuse my
+solution from one-player game.\\
+The input to QBF problem is a formula in prenex normal form, where universal and existential quantifiers
+alternate, no $\rightarrow$ symbol occurs (implication can be rewritten as an alternative with negation)
+and all negations are applied directly to the variables (which can be ensured using de Morgan's laws).
+Such assumptions do not reduce the expressive power of possible input formulas.
+
+\noindent
+The provided QBF can be decomposed into a tree where every node contains a formula created in a compositional
+way from its children.\\
+Thus every subformula is of one of the following forms:
+\begin{itemize}
+      \item $x$ -- a single free variable
+      \item $\lnot x$ -- a negation of single free variable
+      \item $\theta \lor \delta$, where $\theta$ and $\delta$ are subformulas with no quantifiers, no $\rightarrow$ symbols,
+            such that every negation is applied directly to a variable
+      \item $\theta \land \delta$, with the assumptions about $\theta$ and $\delta$ as above
+      \item $\exists_{x} \psi$, where $\psi$ is a formula, possibly with quantifiers and a potentially non-empty set of
+            free variables
+      \item $\forall_{x} \psi$, where $\psi$ is a formula, possibly with quantifiers and a potentially non-empty set of
+            free variables
+\end{itemize}
+I will show how to, for each of the above kinds of subformulas, construct a subgraph. The algorithm is
+be compositional, i.e. does not require any knowledge about nested subformulas. Another nice property is that
+the graph will stay valid at each step of the game.\\
+
+\textbf{TODO}
