@@ -93,7 +93,8 @@ The created multi-reachability game is $G = \langle V, E, v_I, S \rangle$, where
           It is created directly from the CNF formula, i.e.
           $S = \underset{1 \leq i \leq m}{\bigcup} \{ \{ v_{y_{i,j}}\ |\ 1 \leq j \leq k_i \} \}$
 \end{itemize}
-The first player is the existential player, their opponent is the universal player (and they start the game).
+The first player is the existential player if the formula starts with an existential quantifier.
+Otherwise the universal player starts.
 The QBF formula is satisfiable iff the first player has a winning strategy.\\
 
 \noindent

@@ -11,7 +11,7 @@ Show that the above problem is PSpace-complete.}\\
 I will use Savitch's theorem here, more concretely its corollary $\textsc{NPSpace} = \textsc{PSpace}$.\\
 Let $G = \langle V, E \rangle$ be the graph on which the only player plays the game and let $e$ be the
 winning objective -- the single edge to reverse in order to win the game. There can only be $2^{|E|}$
-different stats of the game, so if there exists a sequence of moves reversing edge $e$, there also
+different states of the game, so if there exists a sequence of moves reversing edge $e$, there also
 exists such sequence not longer than $2^{|E|}$.\\
 We can use a totally nondeterministic algorithm, which in each timestep chooses nondeterministically
 any edge in the graph such that it can be reversed without invalidating the graph (this can be checked
@@ -101,6 +101,8 @@ if and only if the variable (or its negation) is set to true.
             The edges drawn as incoming to $\phi$ or are routed to the nodes corresponding to
             free variables and their negations, the edges coming out from $\phi$ are edges from its
             output node. I will use this convention with all such nested graphs.
+            Note that $FV(\phi)$ and $FV(\psi)$ do not have to be disjoint. There can also be
+            multiple edges incoming into nodes providing the free variables values.
       }
       \includegraphics[scale=0.2]{content/graphics/game10.png}
 \end{figure}
