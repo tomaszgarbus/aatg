@@ -69,6 +69,51 @@ $e$ will be reversed after some sequence of moves if and only if the circuit eva
 \noindent
 \textbf{2. Show that it remains P-complete on planar graphs.}\\
 Of course it remains in P on planar graphs, so it suffices to show that it is still P-hard.
+Consider my solution from the first subproblem -- I will show how to modify the constructed
+graph to make it planar.\\
+As advised, I will use the crossover gadget. Consider the figure below, depicting the gadget.\\
+\textbf{Observation 1}: The gadget, with the edges directed as shown on the figure is a valid subgraph
+(all vertices are firing).\\
+\textbf{Observation 2}: The blue edge denoted $B$ can be reversed if and only if $A$ is reversed.
+Similarily, the blue edge $D$ can be reversed if and only if $C$ is reversed. Moreover, this will
+happen "automatically" (i.e. according to the rules of the zero-player games) -- if $A \in R_k$ for
+some $k$, then $B \in R_{k+4}$. If $C \in R_k$ for some $k$, then $C \in R_{k+6}$.
+\begin{figure}[H]
+      \centering
+      \caption{Crossover gadget with initial edges configuration. All nodes have weight 2,
+      blue edges have weight 2, red edges have weight 1.}
+      \includegraphics[scale=0.2]{content/graphics/game18.png}
+\end{figure}
+\noindent
+In order to effectively use this widget, I will put one more constraint on the input boolean circuit:
+all nodes are placed within "layers" and there are no connections skipping layers. This can be easily
+achieved by introducing dummy $\lor$ or $\land$ nodes with one input. See the figure below for an
+example of such transformation:
+\begin{figure}[H]
+      \centering
+      \caption{Example transformation of the boolean circuit to get rid of skip-layer connections.}
+      \includegraphics[scale=0.2]{content/graphics/game19.png}
+\end{figure}
+\noindent
+Now, having ensured that two nodes can be connected only if they are on two consecutive layers, 
+we need to remove crossing edges.\\
+First, we multiply all weights in the graph (both for edges and vertices)by $2$.\\
+Then let's take any drawing of the graph on 2D plane such that:
+\begin{itemize}
+      \item no three edges go through a single point (at most two edges may be intersecting at one point)
+      \item two edges may intersect only if they have their ends in the same layers in graph
+\end{itemize}
+Then in every point, where two edges are intersecting, we place the crossover gadget. Let's assume
+we can draw the crossover gadget arbitrarily small, so that it does not introduce intersections with
+other edges. From Observation 2 it follows that if there was a sequence of moves winning for in
+original graph, then there also exists a (potentially longer) sequence of moves winning for in the
+graph with crossover gadgets, and vice versa.
+\begin{figure}[H]
+      \centering
+      \caption{Example transformation of a graph created from a boolean circuit using the method
+      from subproblem 1 to a planar graph. The purple dots each denote a crossover gadget.}
+      \includegraphics[scale=0.1]{content/graphics/game20.png}
+\end{figure}
 
 \textbf{
       3. Show that it remains P-complete if we restict to graphs whose vertices have
