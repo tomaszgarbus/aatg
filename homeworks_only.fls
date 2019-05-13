@@ -305,8 +305,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/plbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/plcsc10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/plcsc10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/pl/plcsc10.tfm
-INPUT /home/tomek/Desktop/AATG/content/homework1_1.2.tex
-INPUT /home/tomek/Desktop/AATG/content/homework1_1.2.tex
 INPUT /home/tomek/Desktop/AATG/content/graphics/game10.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game10.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game10.png
@@ -317,6 +315,16 @@ INPUT /home/tomek/Desktop/AATG/content/graphics/game12.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game12.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game12.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game13.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game13.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game13.png
+INPUT /home/tomek/Desktop/AATG/content/homework1_1.2.tex
+INPUT /home/tomek/Desktop/AATG/content/homework1_1.2.tex
+INPUT /home/tomek/Desktop/AATG/content/graphics/game10.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game10.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game11.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game11.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game12.png
+INPUT /home/tomek/Desktop/AATG/content/graphics/game12.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game13.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game13.png
 INPUT /home/tomek/Desktop/AATG/content/graphics/game14.png
