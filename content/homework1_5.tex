@@ -5,55 +5,26 @@ sets of vertices and the first player wins if every set in the family has been
 visited at least once.\\
 1. Show that MRG game is PSpace-complete.}\\
 1. \underline{$\in \textsc{PSpace}$}\\
-I will use the fact that a normal reachability game is solvable in polynomial time.
-I will also use Savitch theorem, in particular its corollary, stating that
-$\textsc{PSpace} = \textsc{NPSpace}$.\\
-Let $G = \langle V, E, v_I, S \rangle$ be the MRG, where $V$ is the set of vertices,
-$E$ is the set of edges, $v_I$ is the starting vertex and $S$ is the family of sets
-the first player wants to visit.\\
-The first player can nondeterministically choose an ordered sequence of vertices
-$v_1, v_2, ..., v_k$ such that $\forall_{T \in S} \exists_{1 \leq i \leq k} (v_i \in T)$.
-Then we want to check in polynomial space whether the first player can visit selected
-vertices in the specified order, regardless of what the second player is doing.
-This can be done by considering around $4k$ normal reachability games. For each $i, 1 \leq i \leq k$,
-we create 4 reachability games:
+Here I will use the fact that \textsc{PSpace} = \textsc{APTIME} and show that
+MRG is in \textsc{APTIME}.\\
+Let $\mathcal{G} = \langle Pos_E, Pos_A, Moves, \mathcal{F} \rangle$ be the given
+multi-reachability game, where:
 \begin{itemize}
-      \item $\langle V', E', (v_{i-1}, 0), \{ (v_i, 0) \} \rangle$
-      \item $\langle V', E', (v_{i-1}, 0), \{ (v_i, 1) \} \rangle$
-      \item $\langle V', E', (v_{i-1}, 1), \{ (v_i, 0) \} \rangle$
-      \item $\langle V', E', (v_{i-1}, 1), \{ (v_i, 1) \} \rangle$
+      \item $Pos_E$ and $Pos_A$ are the sets of positions belonging to Eve and Adam
+      \item $Moves\ : Pos_E \cup Pos_A \rightarrow Pos_E \cup Pos_A$
+      \item $\mathcal{F} = \{ F_1, F_2, ..., F_m \}$ is the family of sets that Eve wants to visit
 \end{itemize}
-where:\\
-$V' = V \times \{0,1\}$\\
-$E' = \{ ((u,0), (v,1)), ((u,1),(v,0)) \ |\ (u, v) \in E \}$\\
-$v_0 = v_I$\\
-Player $p$ starts, where $(v_{i-1}, p) = v_I$ (not necessarily the first player from our MRG)\\
-
-\noindent
-Such extended set of vertices $V'$ carries, together with the vertex, the information whose move it is.
-Having solved the single reachability games described above, we can perform an algorithm in a
-dynamic-programming-manner as follows:
-\begin{lstlisting}[tabsize=2]
-  wins: bool[k][2][2] = given     # wins[i][ps][pe] iff the first
-                                  # player has a winning strategy in
-                                  # a game <V', E', (v$_{i-1}$, ps), (v$_i$, pe)>
-
-  can_reach[][] = false * [k][2]  # At the end of the algorithm
-                                  # can_reach[i][p] = true iff
-                                  # first player can force the game
-                                  # to reach vertex v$_i$ and player
-                                  # number $p$ has the next move.
-  
-  can_reach[0][0] = true          # First player starts.
-
-  for i := 1 to k:
-    for ps := 0 to 1:
-      for pe := 0 to 1:
-        if can_reach[i-1][ps] and wins[i][ps][pe]:
-          can_reach[i][pe] = true
-\end{lstlisting}
-If either \texttt{can\_reach[k][0]} or \texttt{can\_reach[k][1]} then the first
-player has a winning strategy.\\
+Let $n = |Pos_E \cup Pos_A|$. If Eve has a winning strategy in $\mathcal{G}$, she
+can win in at most $n \cdot |\mathcal{F}|$ steps.\\
+The game can be therefore simulated by an alternating Turing machine -- states in such machine
+have 4 possible types: $accept, reject, \forall, \exists$. Existential state is accepting if any transition
+leads to an accepting state, universal state is accepting if all transitions lead to an accepting state.
+Eve's positions can be represented in alternating machine with $\exists$ states and Adam's positions -- 
+with $\forall$ states.\\
+The machine also keeps a counter of steps. If the number of steps has exceeded $n \cdot |\mathcal{F}|$,
+then transition to $reject$ state happens. Of course, $accept$ states are reached if all sets from
+$\mathcal{F}$ have been visited.\\
+Clearly, such machine works in polynomial time.\\
 
 \noindent
 2. \underline{\textsc{PSpace}-hard}\\
@@ -143,36 +114,33 @@ of the variables occuring in the input formula.\\
 
 \noindent
 1. \underline{$\in \textsc{P}$}\\
-I will again use the fact that a single reachability game is decidable in polynomial time.
-Let $G = \langle V, E, v_I, S = \{ \{v_1\}, \{v_2\}, ..., \{v_k\} \}\rangle$. Just like in the first
-subproblem, let's create some single reachability games:\\
-For each $i, 1 \leq i \leq k$, we create 4 reachability games:
-\begin{itemize}
-      \item $\langle V', E', (v_{i-1}, 0), \{ (v_i, 0) \} \rangle$
-      \item $\langle V', E', (v_{i-1}, 0), \{ (v_i, 1) \} \rangle$
-      \item $\langle V', E', (v_{i-1}, 1), \{ (v_i, 0) \} \rangle$
-      \item $\langle V', E', (v_{i-1}, 1), \{ (v_i, 1) \} \rangle$
-\end{itemize}
-where:\\
-$V' = V \times \{0,1\}$\\
-$E' = \{ ((u,0), (v,1)), ((u,1),(v,0)) \ |\ (u, v) \in E \}$\\
-$v_0 = v_I$\\
-Player $p$ starts, where $(v_{i-1}, p) = v_I$ (not necessarily the first player from our MRG)\\
+I will use the fact that for a standard reachability game, the set of winning positions for Eve can be
+computed in polynomial time, in an iterative manner, using attractors.\\
 
 \noindent
-If (and only if) the first player wins a game $\langle V', E', (u, p), \{ (v, q) \} \rangle$, it means that,
-starting from node $u$ in the original game, if it's turn of player $p$, the first player has a strategy
-for the game to always reach the node $v$ in a way that player $q$ moves next.\\
-Having solved the above games, we can create a relation $R$ such that $((u, p), (v, q)) \in R$ iff
-first player has a winning strategy in game $\langle V', E', (u, p), \{ (v, q) \} \rangle$.
-Note that this relation is transitive. We turn this relation into a graph, such that the nodes
-are pairs $(v_i, p)$ ($0 \leq k, p \in \{0, 1\}$) and the directed edge between two nodes iff they
-are in relation $R$. Then we turn this graph into a DAG of strongly connected components.
-Since the relation is transitive, every strongly connected component will also be a clique, so finding
-a Hamiltonian cycle is trivial inside each component. There exists a Hamiltonian path in the graph if and only if
-the DAG of strongly connected components is a single path. The first player has the winning strategy in the
-original MRG if and only if there exists a Hamiltonian path in the constructed DAG.
-Every step of this method is polynomial in time.\\
+Let $\mathcal{G} = \langle Pos_E, Pos_A, Moves, \mathcal{F} \rangle$ be the given MRG, where
+$Pos_E$ and $Pos_A$ are Eve's and Adam's positions, $Moves$ is the set
+of possible moves and $\mathcal{F}$ is a set of singletons describing the winning condition.\\
+Let us also denote a flattened version of $\mathcal{F}$ as $F = \{v\ | \{v\} \in \mathcal{F} \} = \{f_1, f_2, ..., f_k\}$.\\
+
+\noindent
+We start by solving $|F|$ standard reachability games, where $i$-th game is defined
+$\mathcal{G}_i = \langle Pos_E, Pos_A, Moves, \{f_i\} \rangle$. Let $W_E^i$ be the set of winning positions for Eve
+in game $\mathcal{G}_i$.\\
+For any $i, j$, if $f_i \in W_E^j$, then Eve, having visited the node $f_i$, can force the play to go
+through the node $f_j$. Let us then create a directed graph $G = \langle V, E \rangle$ such that
+\begin{itemize}
+      \item $V = F = \{f_1, ..., f_k\}$
+      \item $E = \{ \langle f_i, f_j \rangle\ |\ f_i \in W_E^j \}$
+\end{itemize}
+Eve has a winning strategy in $\mathcal{G}$ if and only if there exists a path in $G$ visiting every node at least
+once (we just want to find a path, not play a two-player game on $G$).\\
+Note that $E$ represents a transitive relation. In order for Eve to have a winning strategy, it must be connex.
+Otherwise, there exist two nodes $f_a$ and $f_b$ such that $\langle f_a, f_b \rangle, \langle f_b, f_a \rangle \not\in W_E^j$, and then Adam has
+a winning strategy -- allow to visit only one of nodes $f_a, f_b$ and Eve cannot force reaching the other one.\\
+If the relation $E$ is connex, Eve can choose a permutation $v_1, ..., v_k$ of nodes $f_1, ..., f_k$ such that
+for all $i \leq k-1$, $\langle v_i, v_{i+1} \rangle \in E$. Such permutation can be found in polynomial time,
+e.g. by topologically sorting the graph.\\
 
 \noindent
 2. \underline{P-hard}\\
